@@ -38,10 +38,12 @@ def main():
 
         elif user_choice.upper() == "C":
             miles_traveled += random.randrange(10, 20)
-            print("You have traveled", miles_traveled , "miles")
+            print("You have traveled", miles_traveled, "miles")
             camel_tiredness += random.randrange(1, 3)
             thirst += 1
             natives_traveled += random.randrange(7, 14)
+            if random.randrange(1, 20) == 0:
+                drinks_in_canteen += 1
 
         elif user_choice.upper() == "B":
             miles_traveled += random.randrange(5, 12)
@@ -49,13 +51,19 @@ def main():
             thirst += 1
             camel_tiredness += 1
             natives_traveled += random.randrange(7, 14)
+            if random.randrange(1, 20) == 0:
+                drinks_in_canteen += 1
 
         elif user_choice.upper() == "A":
             if drinks_in_canteen > 0:
                 drinks_in_canteen -= 1
+                thirst = 0
                 print("That was good")
             else:
                 print("You don't have any drinks")
+        if miles_traveled > 200:
+            print("You won the game")
+            done = True
 
         if thirst > 6 and not done:
             done = True
@@ -73,11 +81,6 @@ def main():
             print("The natives are getting close!")
         elif miles_traveled - natives_traveled < 0 and not done:
             print("The natives caught up")
-            done = True
-
-
-        if miles_traveled > 200:
-            print("You won the game")
             done = True
 
 
