@@ -17,14 +17,7 @@ if a < b:
     print("a is smaller than b")
 
 if b < a:
-    print("b is smaller than a")
+    print("b is smaller)
 
-print("done")
-
-# Leq is >=
-
-# For Loops for when you know how many times u want to loop
-for i in range(5)
-    print("i will not chew gum in class")
-
-# while loop for when you want to loop until you hit a condition
+months = "JanFebMarAprMayJunJulAugSepOctNovDec",
+n = int(input("Enter a month number: "))
