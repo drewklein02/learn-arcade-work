@@ -33,10 +33,10 @@ def main():
                 " overlooking the deck.\nYou can go north to the deck or west to the kitchen.", 7, 2, 5, None)
     room_list.append(room)
     room = Room("You are on a well made red wood deck that overlooks the pool and backyard, you can see the trees"
-            " in the distance.\nYou can only go back south to the fire place room.", None, 6, None, None)
+                " in the distance.\nYou can only go back south to the fire place room.", None, 6, None, None)
     room_list.append(room)
-    room = Roomn("You are in a small bathroom with clean utilities.\n"
-            " You can only exit to the east to the hallway.", None, None, None, 2)
+    room = Room("You are in a small bathroom with clean utilities.\n"
+                " You can only exit to the east to the hallway.", None, None, None, 2)
     room_list.append(room)
 
     current_room = 0
