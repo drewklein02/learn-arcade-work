@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<!-- saved from url=(0086)https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html -->
+<html class="writer-html5" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>21. Sprites And Collisions — Arcade 2021 documentation</title>
+      <link rel="stylesheet" href="./21. Sprites And Collisions — Arcade 2021 documentation_files/pygments.css" type="text/css">
+      <link rel="stylesheet" href="./21. Sprites And Collisions — Arcade 2021 documentation_files/theme.css" type="text/css">
+      <link rel="stylesheet" href="./21. Sprites And Collisions — Arcade 2021 documentation_files/copybutton.css" type="text/css">
+      <link rel="stylesheet" href="./21. Sprites And Collisions — Arcade 2021 documentation_files/custom.css" type="text/css">
+      <link rel="stylesheet" href="./21. Sprites And Collisions — Arcade 2021 documentation_files/ideal-image-slider.min.css" type="text/css">
+      <link rel="stylesheet" href="./21. Sprites And Collisions — Arcade 2021 documentation_files/default.min.css" type="text/css">
+    <link rel="canonical" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html">
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script type="text/javascript" async="" src="./21. Sprites And Collisions — Arcade 2021 documentation_files/js"></script><script type="text/javascript" async="" src="./21. Sprites And Collisions — Arcade 2021 documentation_files/analytics.js.download"></script><script data-url_root="../../" id="documentation_options" src="./21. Sprites And Collisions — Arcade 2021 documentation_files/documentation_options.js.download"></script>
+        <script src="./21. Sprites And Collisions — Arcade 2021 documentation_files/jquery.js.download"></script>
+        <script src="./21. Sprites And Collisions — Arcade 2021 documentation_files/underscore.js.download"></script>
+        <script src="./21. Sprites And Collisions — Arcade 2021 documentation_files/doctools.js.download"></script>
+        <script src="./21. Sprites And Collisions — Arcade 2021 documentation_files/clipboard.min.js.download"></script>
+        <script src="./21. Sprites And Collisions — Arcade 2021 documentation_files/copybutton.js.download"></script>
+        <script async="async" src="./21. Sprites And Collisions — Arcade 2021 documentation_files/readthedocs-doc-embed.js.download"></script>
+    <script src="./21. Sprites And Collisions — Arcade 2021 documentation_files/theme.js.download"></script>
+    <link rel="index" title="Index" href="https://learn.arcade.academy/en/latest/genindex.html">
+    <link rel="search" title="Search" href="https://learn.arcade.academy/en/latest/search.html">
+    <link rel="next" title="22. Moving Sprites" href="https://learn.arcade.academy/en/latest/chapters/22_moving_sprites/moving_sprites.html">
+    <link rel="prev" title="20. Sound Effects" href="https://learn.arcade.academy/en/latest/chapters/20_sounds/sounds.html"> 
+
+<!-- RTD Extra Head -->
+
+<link rel="stylesheet" href="./21. Sprites And Collisions — Arcade 2021 documentation_files/readthedocs-doc-embed.css" type="text/css">
+
+<script type="application/json" id="READTHEDOCS_DATA">{"ad_free": true, "api_host": "https://readthedocs.org", "build_date": "2021-10-22T15:16:09Z", "builder": "sphinx", "canonical_url": null, "commit": "badc5cb0", "docroot": "/source/", "features": {"docsearch_disabled": false}, "global_analytics_code": "UA-17997319-1", "language": "en", "page": "chapters/21_sprites_and_collisions/sprites", "programming_language": "py", "project": "arcade-book", "proxied_api_host": "/_", "source_suffix": ".rst", "subprojects": {}, "theme": "sphinx_rtd_theme", "user_analytics_code": "", "version": "latest"}</script>
+
+<!--
+Using this variable directly instead of using `JSON.parse` is deprecated.
+The READTHEDOCS_DATA global variable will be removed in the future.
+-->
+<script type="text/javascript">
+READTHEDOCS_DATA = JSON.parse(document.getElementById('READTHEDOCS_DATA').innerHTML);
+</script>
+
+<script type="text/javascript" src="./21. Sprites And Collisions — Arcade 2021 documentation_files/readthedocs-analytics.js.download" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+<script src="./21. Sprites And Collisions — Arcade 2021 documentation_files/js(1)" type="text/javascript" async=""></script></head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="https://learn.arcade.academy/en/latest/index.html" class="icon icon-home"> Arcade
+          </a>
+              <div class="version">
+                latest
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://learn.arcade.academy/en/latest/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current" aria-expanded="true">
+<li class="toctree-l1 current" aria-expanded="true"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/index.html"><button class="toctree-expand" title="Open/close menu"></button>Chapters</a><ul class="" aria-expanded="false">
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/01_foreword/foreword.html">1. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/02_setup/setup.html">2. Setting Up Your System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/03_version_control/index.html">3. Version Control Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/04_print_statement/print_statement.html">4. The Print Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/05_drawing/drawing.html">5. How to Draw with Your Computer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/06_what_is_a_programming_language/index.html">6. What is a Programming Language?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/07_expressions/expressions.html">7. Variables and Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/08_functions/functions.html">8. Creating Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/09_drawing_with_functions/drawing_with_functions.html">9. Drawing With Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/10_if_statements/if_statements.html">10. If Statements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/11_for_loops/for_loops.html">11. For Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/12_while_loops/while_loops.html">12. While Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/13_random_numbers/random_numbers.html">13. Random Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/14_advanced_looping/advanced_looping.html">14. Advanced Looping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/15_lists/lists.html">15. Introduction to Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/16_classes/classes.html">16. Classes, Constructors, and Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/17_class_methods/class_methods.html">17. Class Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/18_window_class/window_class.html">18. Using the Window Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/19_user_control/user_control.html">19. User Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/20_sounds/sounds.html">20. Sound Effects</a></li>
+<li class="toctree-l2 current" aria-expanded="true"><a class="reference internal current" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#" aria-expanded="true"><button class="toctree-expand" title="Open/close menu"></button>21. Sprites And Collisions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#finding-images-for-sprites"><button class="toctree-expand" title="Open/close menu"></button>21.1. Finding Images for Sprites</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#where-to-save-images">21.1.1. Where to Save Images</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#how-to-reference-images">21.1.2. How to Reference Images</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#basic-sprites-and-collisions"><button class="toctree-expand" title="Open/close menu"></button>21.2. Basic Sprites and Collisions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#getting-the-application-started">21.2.1. Getting the Application Started</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#the-constructor">21.2.2. The Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#the-setup-function">21.2.3. The <cite>setup</cite> Function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#drawing-the-score">21.2.4. Drawing The Score</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#the-on-mouse-motion-method">21.2.5. The On Mouse Motion Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#the-update-method">21.2.6. The Update Method</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/22_moving_sprites/moving_sprites.html">22. Moving Sprites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/23_debugging/debugging.html">23. Debugging Programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/24_shooting_sprites/shooting_sprites.html">24. Using Sprites to Shoot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/25_sprites_and_walls/sprites_and_walls.html">25. Sprites and Walls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/26_libraries_and_modules/libraries_and_modules.html">26. Libraries and Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/27_searching/searching.html">27. Searching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/28_array_backed_grids/array_backed_grids.html">28. Array-Backed Grids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/29_platformers/platformers.html">29. Platformers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/30_sorting/sorting.html">30. Sorting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/31_exceptions/exceptions.html">31. Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/32_print_formatting/print_formatting.html">32. String Formatting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/33_recursion/recursion.html">33. Recursion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/xx_venv_setup/index.html">34. Virtual Environments In PyCharm</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://learn.arcade.academy/en/latest/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://learn.arcade.academy/en/latest/languages.html">Languages</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="https://learn.arcade.academy/en/latest/index.html">Arcade</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="https://learn.arcade.academy/en/latest/index.html" class="icon icon-home"></a> »</li>
+          <li><a href="https://learn.arcade.academy/en/latest/chapters/index.html">Chapters</a> »</li>
+      <li><span class="section-number">21. </span>Sprites And Collisions</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/pvcraven/arcade_book/blob/master/source/chapters/21_sprites_and_collisions/sprites.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="sprites-and-collisions">
+<span id="sprites"></span><h1><span class="section-number">21. </span>Sprites And Collisions<a class="headerlink" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#sprites-and-collisions" title="Permalink to this headline"></a></h1>
+<p>Our games need support for handling objects that collide. Balls bouncing off
+paddles, laser beams hitting aliens, or our favorite character collecting a
+coin. All these examples require collision detection.</p>
+<p>The Arcade library has support for sprites. A sprite is a two-dimensional
+image that is part of the larger graphical scene. Typically a sprite will
+be some kind of object in the scene that will be interacted with like a car,
+frog, or little plumber guy.</p>
+<a class="reference internal image-reference" href="./21. Sprites And Collisions — Arcade 2021 documentation_files/sprite.png"><img alt="../../_images/sprite.png" src="./21. Sprites And Collisions — Arcade 2021 documentation_files/sprite.png" style="width: 250px;"></a>
+<p>Originally, video game consoles had built-in hardware support for sprites.
+Now this specialized hardware support is no longer needed, but we still use
+the term “sprite.” The <a class="reference external" href="https://en.wikipedia.org/wiki/Sprite_(computer_graphics)">history of sprites</a> is interesting, if you want to
+read up more about it.</p>
+<div class="section" id="finding-images-for-sprites">
+<h2><span class="section-number">21.1. </span>Finding Images for Sprites<a class="headerlink" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#finding-images-for-sprites" title="Permalink to this headline"></a></h2>
+<p>There are several image formats that computers use:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.bmp</span></code> - Bitmap. This is an uncompressed image that normally uses three bytes to represent each dot in the image.
+These files can be very large. Because there are so many better options, this format is not used often. It is,
+however, the simplest format to use.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.png</span></code> - Great patent-free format for line art and clip art. Not great for photos. Can’t hold animations.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.gif</span></code> - Great format for line art and clip art. Has had issues with patents (now expired). Can do animations.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.jpg</span></code> - Great file format for photos. Terrible for clip-art. Don’t use for sprites.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.svg</span></code> - File format for storing line-art images that can scale to any resolution. Not compatible with the
+“arcade” library.</p></li>
+</ul>
+<p>If you use Google’s <a class="reference external" href="https://www.google.com/advanced_image_search">advanced image search</a> you can find images that are “icon” sized, and either png or gif file
+format.</p>
+<p>There’s also a great source for images from <a class="reference external" href="http://kenney.nl/">kenney.nl</a>. He has a lot of free and cheap game image assets.
+That’s where the following images come from that we will use in our examples:</p>
+<div class="figure align-default" id="id1">
+<img alt="../../_images/character.png" src="./21. Sprites And Collisions — Arcade 2021 documentation_files/character.png">
+<p class="caption"><span class="caption-text">character.png</span><a class="headerlink" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#id1" title="Permalink to this image"></a></p>
+</div>
+<div class="figure align-default" id="id2">
+<img alt="../../_images/coin_01.png" src="./21. Sprites And Collisions — Arcade 2021 documentation_files/coin_01.png">
+<p class="caption"><span class="caption-text">coin_01.png</span><a class="headerlink" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#id2" title="Permalink to this image"></a></p>
+</div>
+<p>There are also some sprites that come with the Arcade library. A list of those sprites is available at:</p>
+<p><a class="reference external" href="https://api.arcade.academy/en/latest/resources.html">https://api.arcade.academy/en/latest/resources.html</a></p>
+<p>You cal load these using a filename pattern such as: <code class="docutils literal notranslate"><span class="pre">:resources:images/topdown_tanks/tank_red.png</span></code></p>
+<div class="section" id="where-to-save-images">
+<h3><span class="section-number">21.1.1. </span>Where to Save Images<a class="headerlink" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#where-to-save-images" title="Permalink to this headline"></a></h3>
+<p>Where should you save them? If you load your sprite with the code
+below, the computer will look for the <code class="docutils literal notranslate"><span class="pre">character.png</span></code> image in the same
+directory as your Python file. Save the image anywhere else, and it won’t
+be found.</p>
+</div>
+<div class="section" id="how-to-reference-images">
+<h3><span class="section-number">21.1.2. </span>How to Reference Images<a class="headerlink" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#how-to-reference-images" title="Permalink to this headline"></a></h3>
+<p>If you create your own game that you publish, you need to:</p>
+<ul class="simple">
+<li><p>Create your own images</p></li>
+<li><p>Hire someone to create your images</p></li>
+<li><p>Buy your own images with a license to use them in your own game</p></li>
+<li><p>Find images that are public domain or licensed for public use</p></li>
+</ul>
+<p>If you are just creating a game for class that won’t be used in public, then right
+before you load the image leave a comment with the source. I’ll show this in a bit.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Do not list “Google” as a source. That’s like using “The Library” as a source in your report. Find
+the source of the image that Google is pointing to.</p>
+</div>
+</div>
+</div>
+<div class="section" id="basic-sprites-and-collisions">
+<h2><span class="section-number">21.2. </span>Basic Sprites and Collisions<a class="headerlink" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#basic-sprites-and-collisions" title="Permalink to this headline"></a></h2>
+<p>Let’s step through an example program that uses sprites. This example shows how
+to create a screen of sprites that are coins, and collect them using a sprite
+that is a character image
+controlled by the mouse as shown in the figure below. The program keeps “score”
+on how many coins have been collected. The code for this example may be found at:</p>
+<p><a class="reference external" href="https://api.arcade.academy/en/latest/examples/sprite_collect_coins.html">https://api.arcade.academy/en/latest/examples/sprite_collect_coins.html</a></p>
+<p>In this chapter, we’ll step through that example.</p>
+<div class="figure align-default" id="id3">
+<img alt="../../_images/collect_coins.gif" src="./21. Sprites And Collisions — Arcade 2021 documentation_files/collect_coins.gif">
+<p class="caption"><span class="caption-text">Example Sprite Game</span><a class="headerlink" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#id3" title="Permalink to this image"></a></p>
+</div>
+<div class="section" id="getting-the-application-started">
+<h3><span class="section-number">21.2.1. </span>Getting the Application Started<a class="headerlink" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#getting-the-application-started" title="Permalink to this headline"></a></h3>
+<p>The first few lines of our program start off like other games we’ve done. We
+import a couple libraries. Set a couple constants for the size of the screen,
+and a couple new constants that we will use to scale our graphics.</p>
+<p>The example below should have nothing new, it just creates a window and sets a
+background color. We’ll add in the new stuff soon.</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Sprite Sample Start</span><a class="headerlink" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#id4" title="Permalink to this code"></a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div class="highlight"><pre id="codecell0"><span></span><span class="sd">""" Sprite Sample Program """</span>
+
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">arcade</span>
+
+<span class="c1"># --- Constants ---</span>
+<span class="n">SPRITE_SCALING_PLAYER</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">SPRITE_SCALING_COIN</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">COIN_COUNT</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="n">SCREEN_WIDTH</span> <span class="o">=</span> <span class="mi">800</span>
+<span class="n">SCREEN_HEIGHT</span> <span class="o">=</span> <span class="mi">600</span>
+
+
+<span class="k">class</span> <span class="nc">MyGame</span><span class="p">(</span><span class="n">arcade</span><span class="o">.</span><span class="n">Window</span><span class="p">):</span>
+    <span class="sd">""" Our custom Window Class"""</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">""" Initializer """</span>
+        <span class="c1"># Call the parent class initializer</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">SCREEN_WIDTH</span><span class="p">,</span> <span class="n">SCREEN_HEIGHT</span><span class="p">,</span> <span class="s2">"Sprite Example"</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">arcade</span><span class="o">.</span><span class="n">start_render</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">""" Main method """</span>
+    <span class="n">window</span> <span class="o">=</span> <span class="n">MyGame</span><span class="p">()</span>
+    <span class="n">arcade</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell0">
+      <img src="./21. Sprites And Collisions — Arcade 2021 documentation_files/copy-button.svg" alt="Copy to clipboard">
+    </button></div>
+</td></tr></tbody></table></div>
+</div>
+</div>
+<div class="section" id="the-constructor">
+<h3><span class="section-number">21.2.2. </span>The Constructor<a class="headerlink" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#the-constructor" title="Permalink to this headline"></a></h3>
+<p>What’s next? We need to add our attributes to the <code class="docutils literal notranslate"><span class="pre">MyGame</span></code> class.
+We add our attributes to the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method. Here is our
+code with the expanded <code class="docutils literal notranslate"><span class="pre">__init__</span></code>:</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">Expanded Init</span><a class="headerlink" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#id5" title="Permalink to this code"></a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span></pre></div></td><td class="code"><div class="highlight"><pre id="codecell1"><span></span><span class="sd">""" Sprite Sample Program """</span>
+
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">arcade</span>
+
+<span class="c1"># --- Constants ---</span>
+<span class="n">SPRITE_SCALING_PLAYER</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">SPRITE_SCALING_COIN</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">COIN_COUNT</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="n">SCREEN_WIDTH</span> <span class="o">=</span> <span class="mi">800</span>
+<span class="n">SCREEN_HEIGHT</span> <span class="o">=</span> <span class="mi">600</span>
+
+
+<span class="k">class</span> <span class="nc">MyGame</span><span class="p">(</span><span class="n">arcade</span><span class="o">.</span><span class="n">Window</span><span class="p">):</span>
+    <span class="sd">""" Our custom Window Class"""</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">""" Initializer """</span>
+        <span class="c1"># Call the parent class initializer</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">SCREEN_WIDTH</span><span class="p">,</span> <span class="n">SCREEN_HEIGHT</span><span class="p">,</span> <span class="s2">"Sprite Example"</span><span class="p">)</span>
+
+<span class="hll">        <span class="c1"># Variables that will hold sprite lists.</span>
+</span><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">player_list</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">coin_list</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span class="hll">
+</span><span class="hll">        <span class="c1"># Set up the player info</span>
+</span><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="hll">
+</span><span class="hll">        <span class="c1"># Don't show the mouse cursor</span>
+</span><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">set_mouse_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</span><span class="hll">
+</span><span class="hll">        <span class="n">arcade</span><span class="o">.</span><span class="n">set_background_color</span><span class="p">(</span><span class="n">arcade</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">AMAZON</span><span class="p">)</span>
+</span>
+    <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">arcade</span><span class="o">.</span><span class="n">start_render</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">""" Main method """</span>
+    <span class="n">window</span> <span class="o">=</span> <span class="n">MyGame</span><span class="p">()</span>
+    <span class="n">arcade</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell1">
+      <img src="./21. Sprites And Collisions — Arcade 2021 documentation_files/copy-button.svg" alt="Copy to clipboard">
+    </button></div>
+</td></tr></tbody></table></div>
+</div>
+<p>The variables we are creating:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">player_list</span></code>:  When working with sprites, we normally put them into
+lists. Other game engines might call these sprite groups, or sprite layers.
+Our game will have one list for the player, and one list for the coins.
+Even if there is only one sprite, we should still put it in a list because
+there is a lot of code in <code class="docutils literal notranslate"><span class="pre">SpriteList</span></code> to optimize drawing.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">coin_list</span></code>: This is a list of all the coins. We will be checking if the
+player touches any sprite in this list.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">player_sprite</span></code>: This points to our player’s sprite. It is the sprite
+we will move.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">score</span></code>: This keeps track of our score.</p></li>
+</ul>
+<p>We use a command built into the parent <code class="docutils literal notranslate"><span class="pre">Window</span></code> class called
+<code class="docutils literal notranslate"><span class="pre">set_mouse_visible</span></code> to make the mouse not visible. Finally we set the
+background color.</p>
+</div>
+<div class="section" id="the-setup-function">
+<h3><span class="section-number">21.2.3. </span>The <cite>setup</cite> Function<a class="headerlink" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#the-setup-function" title="Permalink to this headline"></a></h3>
+<p>Next up, we will create a <code class="docutils literal notranslate"><span class="pre">setup</span></code> method. This will create our sprites and get
+our game set up. We do this in a different method than <code class="docutils literal notranslate"><span class="pre">__init__</span></code> so that
+if we ever want to restart the game, we can just call <code class="docutils literal notranslate"><span class="pre">setup</span></code> again.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">setup</span></code> method is not called automatically.
+Therefore in the example below, note we have added the
+code that calls the <code class="docutils literal notranslate"><span class="pre">setup</span></code> function near the end: <code class="docutils literal notranslate"><span class="pre">window.setup()</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">Sprite Sample With Player</span><a class="headerlink" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#id6" title="Permalink to this code"></a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span></pre></div></td><td class="code"><div class="highlight"><pre id="codecell2"><span></span><span class="sd">""" Sprite Sample Program """</span>
+
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">arcade</span>
+
+<span class="c1"># --- Constants ---</span>
+<span class="n">SPRITE_SCALING_PLAYER</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">SPRITE_SCALING_COIN</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">COIN_COUNT</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="n">SCREEN_WIDTH</span> <span class="o">=</span> <span class="mi">800</span>
+<span class="n">SCREEN_HEIGHT</span> <span class="o">=</span> <span class="mi">600</span>
+
+
+<span class="k">class</span> <span class="nc">MyGame</span><span class="p">(</span><span class="n">arcade</span><span class="o">.</span><span class="n">Window</span><span class="p">):</span>
+    <span class="sd">""" Our custom Window Class"""</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">""" Initializer """</span>
+        <span class="c1"># Call the parent class initializer</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">SCREEN_WIDTH</span><span class="p">,</span> <span class="n">SCREEN_HEIGHT</span><span class="p">,</span> <span class="s2">"Sprite Example"</span><span class="p">)</span>
+
+        <span class="c1"># Variables that will hold sprite lists</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_list</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coin_list</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Set up the player info</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># Don't show the mouse cursor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_mouse_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="n">arcade</span><span class="o">.</span><span class="n">set_background_color</span><span class="p">(</span><span class="n">arcade</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">AMAZON</span><span class="p">)</span>
+
+<span class="hll">    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class="hll">        <span class="sd">""" Set up the game and initialize the variables. """</span>
+</span><span class="hll">
+</span><span class="hll">        <span class="c1"># Sprite lists</span>
+</span><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">player_list</span> <span class="o">=</span> <span class="n">arcade</span><span class="o">.</span><span class="n">SpriteList</span><span class="p">()</span>
+</span><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">coin_list</span> <span class="o">=</span> <span class="n">arcade</span><span class="o">.</span><span class="n">SpriteList</span><span class="p">()</span>
+</span><span class="hll">
+</span><span class="hll">        <span class="c1"># Score</span>
+</span><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="hll">
+</span><span class="hll">        <span class="c1"># Set up the player</span>
+</span><span class="hll">        <span class="c1"># Character image from kenney.nl</span>
+</span><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span> <span class="o">=</span> <span class="n">arcade</span><span class="o">.</span><span class="n">Sprite</span><span class="p">(</span><span class="s2">"character.png"</span><span class="p">,</span> <span class="n">SPRITE_SCALING_PLAYER</span><span class="p">)</span>
+</span><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span><span class="o">.</span><span class="n">center_x</span> <span class="o">=</span> <span class="mi">50</span>
+</span><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span><span class="o">.</span><span class="n">center_y</span> <span class="o">=</span> <span class="mi">50</span>
+</span><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">player_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span><span class="p">)</span>
+</span>
+    <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">arcade</span><span class="o">.</span><span class="n">start_render</span><span class="p">()</span>
+
+<span class="hll">        <span class="c1"># Draw the sprite lists here. Typically sprites are divided into</span>
+</span><span class="hll">        <span class="c1"># different groups. Other game engines might call these "sprite layers"</span>
+</span><span class="hll">        <span class="c1"># or "sprite groups." Sprites that don't move should be drawn in their</span>
+</span><span class="hll">        <span class="c1"># own group for the best performance, as Arcade can tell the graphics</span>
+</span><span class="hll">        <span class="c1"># card to just redraw them at the same spot.</span>
+</span><span class="hll">        <span class="c1"># Try to avoid drawing sprites on their own, use a SpriteList</span>
+</span><span class="hll">        <span class="c1"># because there are many performance improvements in that code.</span>
+</span><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">coin_list</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</span><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">player_list</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">""" Main method """</span>
+    <span class="n">window</span> <span class="o">=</span> <span class="n">MyGame</span><span class="p">()</span>
+<span class="hll">    <span class="n">window</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+</span>    <span class="n">arcade</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell2">
+      <img src="./21. Sprites And Collisions — Arcade 2021 documentation_files/copy-button.svg" alt="Copy to clipboard">
+    </button></div>
+</td></tr></tbody></table></div>
+</div>
+<p>How does the code above work?</p>
+<p>First, we need some lists to hold our sprites. We could do use a list like
+this:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre id="codecell3"><span></span><span class="n">coin_list</span> <span class="o">=</span> <span class="p">[]</span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell3">
+      <img src="./21. Sprites And Collisions — Arcade 2021 documentation_files/copy-button.svg" alt="Copy to clipboard">
+    </button></div>
+</div>
+<p>But wait! <code class="docutils literal notranslate"><span class="pre">coin_list</span></code> is an instance variable that’s part of our class.
+we need to prepend it with <code class="docutils literal notranslate"><span class="pre">self.</span></code>.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre id="codecell4"><span></span><span class="bp">self</span><span class="o">.</span><span class="n">coin_list</span> <span class="o">=</span> <span class="p">[]</span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell4">
+      <img src="./21. Sprites And Collisions — Arcade 2021 documentation_files/copy-button.svg" alt="Copy to clipboard">
+    </button></div>
+</div>
+<p>However, the Arcade library has a class especially for handling sprite lists.
+This class is called <code class="docutils literal notranslate"><span class="pre">SpriteList</span></code>.
+For more information, check out the <a class="reference external" href="https://api.arcade.academy/en/latest/api/sprite_list.html#arcade.SpriteList" title="(in Python Arcade Library v2.6.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">arcade.SpriteList</span></code></a> documentation.
+So instead of creating an empty list with
+<code class="docutils literal notranslate"><span class="pre">[]</span></code>, we will create a new instance of the <code class="docutils literal notranslate"><span class="pre">SpriteList</span></code> class:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre id="codecell5"><span></span><span class="bp">self</span><span class="o">.</span><span class="n">coin_list</span> <span class="o">=</span> <span class="n">SpriteList</span><span class="p">()</span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell5">
+      <img src="./21. Sprites And Collisions — Arcade 2021 documentation_files/copy-button.svg" alt="Copy to clipboard">
+    </button></div>
+</div>
+<p>Except that doesn’t work. Why? <code class="docutils literal notranslate"><span class="pre">SpriteList</span></code> is in the Arcade library. We
+need to prepend any reference to things in the Arcade library with <code class="docutils literal notranslate"><span class="pre">arcade</span></code>
+of course, so now we have:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre id="codecell6"><span></span><span class="bp">self</span><span class="o">.</span><span class="n">coin_list</span> <span class="o">=</span> <span class="n">arcade</span><span class="o">.</span><span class="n">SpriteList</span><span class="p">()</span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell6">
+      <img src="./21. Sprites And Collisions — Arcade 2021 documentation_files/copy-button.svg" alt="Copy to clipboard">
+    </button></div>
+</div>
+<p>We need a separate list for just coins. This list won’t have the player. We also
+need to reset our score to 0.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre id="codecell7"><span></span><span class="bp">self</span><span class="o">.</span><span class="n">coin_list</span> <span class="o">=</span> <span class="n">arcade</span><span class="o">.</span><span class="n">SpriteList</span><span class="p">()</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell7">
+      <img src="./21. Sprites And Collisions — Arcade 2021 documentation_files/copy-button.svg" alt="Copy to clipboard">
+    </button></div>
+</div>
+<p>Now we need to create our sprites. The name of the class that represents sprites
+is called <code class="docutils literal notranslate"><span class="pre">Sprite</span></code>. You can read more about it by looking at the <a class="reference external" href="https://api.arcade.academy/en/latest/api/sprites.html#arcade.Sprite" title="(in Python Arcade Library v2.6.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">arcade.Sprite</span></code></a>
+documentation.
+The Sprite constructor takes two parameters. A path to the image we will be
+using, and how big to scale it.</p>
+<p>For class, please source the image right before you load it. If you drew your own image, please note that as well.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre id="codecell8"><span></span><span class="c1"># Character image from kenney.nl</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span> <span class="o">=</span> <span class="n">arcade</span><span class="o">.</span><span class="n">Sprite</span><span class="p">(</span><span class="s2">"character.png"</span><span class="p">,</span> <span class="n">SPRITE_SCALING_PLAYER</span><span class="p">)</span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell8">
+      <img src="./21. Sprites And Collisions — Arcade 2021 documentation_files/copy-button.svg" alt="Copy to clipboard">
+    </button></div>
+</div>
+<p>How do we draw all our sprites? Really easy. Just call the <code class="docutils literal notranslate"><span class="pre">draw</span></code> method that
+exists for us in the <code class="docutils literal notranslate"><span class="pre">SpriteList</span></code> class. We just need to do this for each of
+our sprite lists.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre id="codecell9"><span></span><span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">arcade</span><span class="o">.</span><span class="n">start_render</span><span class="p">()</span>
+
+        <span class="c1"># Draw all the sprite lists.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coin_list</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_list</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell9">
+      <img src="./21. Sprites And Collisions — Arcade 2021 documentation_files/copy-button.svg" alt="Copy to clipboard">
+    </button></div>
+</div>
+<p>Wait. We don’t have many sprites. There are no coins, and we have just the player.
+Let’s add a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to our program and create a bunch of coins:</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">Sprite Sample With Player And Coins</span><a class="headerlink" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#id7" title="Permalink to this code"></a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span></pre></div></td><td class="code"><div class="highlight"><pre id="codecell10"><span></span><span class="sd">""" Sprite Sample Program """</span>
+
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">arcade</span>
+
+<span class="c1"># --- Constants ---</span>
+<span class="n">SPRITE_SCALING_PLAYER</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">SPRITE_SCALING_COIN</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">COIN_COUNT</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="n">SCREEN_WIDTH</span> <span class="o">=</span> <span class="mi">800</span>
+<span class="n">SCREEN_HEIGHT</span> <span class="o">=</span> <span class="mi">600</span>
+
+
+<span class="k">class</span> <span class="nc">MyGame</span><span class="p">(</span><span class="n">arcade</span><span class="o">.</span><span class="n">Window</span><span class="p">):</span>
+    <span class="sd">""" Our custom Window Class"""</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">""" Initializer """</span>
+        <span class="c1"># Call the parent class initializer</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">SCREEN_WIDTH</span><span class="p">,</span> <span class="n">SCREEN_HEIGHT</span><span class="p">,</span> <span class="s2">"Sprite Example"</span><span class="p">)</span>
+
+        <span class="c1"># Variables that will hold sprite lists</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coin_list</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_list</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Set up the player info</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># Don't show the mouse cursor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_mouse_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="n">arcade</span><span class="o">.</span><span class="n">set_background_color</span><span class="p">(</span><span class="n">arcade</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">AMAZON</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">""" Set up the game and initialize the variables. """</span>
+
+        <span class="c1"># Sprite lists</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_list</span> <span class="o">=</span> <span class="n">arcade</span><span class="o">.</span><span class="n">SpriteList</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coin_list</span> <span class="o">=</span> <span class="n">arcade</span><span class="o">.</span><span class="n">SpriteList</span><span class="p">()</span>
+
+        <span class="c1"># Score</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># Set up the player</span>
+        <span class="c1"># Character image from kenney.nl</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span> <span class="o">=</span> <span class="n">arcade</span><span class="o">.</span><span class="n">Sprite</span><span class="p">(</span><span class="s2">"character.png"</span><span class="p">,</span> <span class="n">SPRITE_SCALING_PLAYER</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span><span class="o">.</span><span class="n">center_x</span> <span class="o">=</span> <span class="mi">50</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span><span class="o">.</span><span class="n">center_y</span> <span class="o">=</span> <span class="mi">50</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span><span class="p">)</span>
+
+        <span class="c1"># Create the coins</span>
+<span class="hll">        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">COIN_COUNT</span><span class="p">):</span>
+</span><span class="hll">
+</span><span class="hll">            <span class="c1"># Create the coin instance</span>
+</span><span class="hll">            <span class="c1"># Coin image from kenney.nl</span>
+</span><span class="hll">            <span class="n">coin</span> <span class="o">=</span> <span class="n">arcade</span><span class="o">.</span><span class="n">Sprite</span><span class="p">(</span><span class="s2">"coin_01.png"</span><span class="p">,</span> <span class="n">SPRITE_SCALING_COIN</span><span class="p">)</span>
+</span><span class="hll">
+</span><span class="hll">            <span class="c1"># Position the coin</span>
+</span><span class="hll">            <span class="n">coin</span><span class="o">.</span><span class="n">center_x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="n">SCREEN_WIDTH</span><span class="p">)</span>
+</span><span class="hll">            <span class="n">coin</span><span class="o">.</span><span class="n">center_y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="n">SCREEN_HEIGHT</span><span class="p">)</span>
+</span><span class="hll">
+</span><span class="hll">            <span class="c1"># Add the coin to the lists</span>
+</span><span class="hll">            <span class="bp">self</span><span class="o">.</span><span class="n">coin_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coin</span><span class="p">)</span>
+</span>
+    <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">""" Draw everything """</span>
+        <span class="n">arcade</span><span class="o">.</span><span class="n">start_render</span><span class="p">()</span>
+
+        <span class="c1"># Draw the sprite lists here. Typically sprites are divided into</span>
+        <span class="c1"># different groups. Other game engines might call these "sprite layers"</span>
+        <span class="c1"># or "sprite groups." Sprites that don't move should be drawn in their</span>
+        <span class="c1"># own group for the best performance, as Arcade can tell the graphics</span>
+        <span class="c1"># card to just redraw them at the same spot.</span>
+        <span class="c1"># Try to avoid drawing sprites on their own, and not in a layer.</span>
+        <span class="c1"># There are many performance improvements to drawing in a layer.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coin_list</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_list</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">""" Main method """</span>
+    <span class="n">window</span> <span class="o">=</span> <span class="n">MyGame</span><span class="p">()</span>
+    <span class="n">window</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+    <span class="n">arcade</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell10">
+      <img src="./21. Sprites And Collisions — Arcade 2021 documentation_files/copy-button.svg" alt="Copy to clipboard">
+    </button></div>
+</td></tr></tbody></table></div>
+</div>
+</div>
+<div class="section" id="drawing-the-score">
+<h3><span class="section-number">21.2.4. </span>Drawing The Score<a class="headerlink" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#drawing-the-score" title="Permalink to this headline"></a></h3>
+<p>In addition to drawing the sprites, let’s go ahead and
+put the score on the screen:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre id="codecell11"><span></span><span class="c1"># Put the text on the screen.</span>
+<span class="n">output</span> <span class="o">=</span> <span class="s2">"Score: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">score</span><span class="p">)</span>
+<span class="n">arcade</span><span class="o">.</span><span class="n">draw_text</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">arcade</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">WHITE</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell11">
+      <img src="./21. Sprites And Collisions — Arcade 2021 documentation_files/copy-button.svg" alt="Copy to clipboard">
+    </button></div>
+</div>
+<p>Rather than do that <code class="docutils literal notranslate"><span class="pre">"Score:</span> <span class="pre">"</span> <span class="pre">+</span> <span class="pre">str(self.score)</span></code> it is possible to use
+string formatting . We’ll talk more about
+this in the <a class="reference internal" href="https://learn.arcade.academy/en/latest/chapters/32_print_formatting/print_formatting.html#string-formatting"><span class="std std-ref">String Formatting</span></a> chapter. That code would look like:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre id="codecell12"><span></span><span class="c1"># Put the text on the screen.</span>
+<span class="n">output</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"Score: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">score</span><span class="si">}</span><span class="s2">"</span>
+<span class="n">arcade</span><span class="o">.</span><span class="n">draw_text</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">arcade</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">WHITE</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell12">
+      <img src="./21. Sprites And Collisions — Arcade 2021 documentation_files/copy-button.svg" alt="Copy to clipboard">
+    </button></div>
+</div>
+</div>
+<div class="section" id="the-on-mouse-motion-method">
+<h3><span class="section-number">21.2.5. </span>The On Mouse Motion Method<a class="headerlink" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#the-on-mouse-motion-method" title="Permalink to this headline"></a></h3>
+<p>Moving the player sprite with the mouse is easy. All sprites have instance
+variables <code class="docutils literal notranslate"><span class="pre">center_x</span></code> and <code class="docutils literal notranslate"><span class="pre">center_y</span></code>. Just change those values to the mouse’s
+x and y location to move the sprite.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre id="codecell13"><span></span><span class="k">def</span> <span class="nf">on_mouse_motion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">):</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span><span class="o">.</span><span class="n">center_x</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span><span class="o">.</span><span class="n">center_y</span> <span class="o">=</span> <span class="n">y</span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell13">
+      <img src="./21. Sprites And Collisions — Arcade 2021 documentation_files/copy-button.svg" alt="Copy to clipboard">
+    </button></div>
+</div>
+<p>Now, our whole program looks like:</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">Sprite Sample With Mouse Motion And Score</span><a class="headerlink" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#id8" title="Permalink to this code"></a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span></pre></div></td><td class="code"><div class="highlight"><pre id="codecell14"><span></span><span class="sd">""" Sprite Sample Program """</span>
+
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">arcade</span>
+
+<span class="c1"># --- Constants ---</span>
+<span class="n">SPRITE_SCALING_PLAYER</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">SPRITE_SCALING_COIN</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">COIN_COUNT</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="n">SCREEN_WIDTH</span> <span class="o">=</span> <span class="mi">800</span>
+<span class="n">SCREEN_HEIGHT</span> <span class="o">=</span> <span class="mi">600</span>
+
+
+<span class="k">class</span> <span class="nc">MyGame</span><span class="p">(</span><span class="n">arcade</span><span class="o">.</span><span class="n">Window</span><span class="p">):</span>
+    <span class="sd">""" Our custom Window Class"""</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">""" Initializer """</span>
+        <span class="c1"># Call the parent class initializer</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">SCREEN_WIDTH</span><span class="p">,</span> <span class="n">SCREEN_HEIGHT</span><span class="p">,</span> <span class="s2">"Sprite Example"</span><span class="p">)</span>
+
+        <span class="c1"># Variables that will hold sprite lists</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_list</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coin_list</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Set up the player info</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># Don't show the mouse cursor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_mouse_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="n">arcade</span><span class="o">.</span><span class="n">set_background_color</span><span class="p">(</span><span class="n">arcade</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">AMAZON</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">""" Set up the game and initialize the variables. """</span>
+
+        <span class="c1"># Sprite lists</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_list</span> <span class="o">=</span> <span class="n">arcade</span><span class="o">.</span><span class="n">SpriteList</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coin_list</span> <span class="o">=</span> <span class="n">arcade</span><span class="o">.</span><span class="n">SpriteList</span><span class="p">()</span>
+
+        <span class="c1"># Score</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># Set up the player</span>
+        <span class="c1"># Character image from kenney.nl</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span> <span class="o">=</span> <span class="n">arcade</span><span class="o">.</span><span class="n">Sprite</span><span class="p">(</span><span class="s2">"character.png"</span><span class="p">,</span> <span class="n">SPRITE_SCALING_PLAYER</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span><span class="o">.</span><span class="n">center_x</span> <span class="o">=</span> <span class="mi">50</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span><span class="o">.</span><span class="n">center_y</span> <span class="o">=</span> <span class="mi">50</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span><span class="p">)</span>
+
+        <span class="c1"># Create the coins</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">COIN_COUNT</span><span class="p">):</span>
+
+            <span class="c1"># Create the coin instance</span>
+            <span class="c1"># Coin image from kenney.nl</span>
+            <span class="n">coin</span> <span class="o">=</span> <span class="n">arcade</span><span class="o">.</span><span class="n">Sprite</span><span class="p">(</span><span class="s2">"coin_01.png"</span><span class="p">,</span> <span class="n">SPRITE_SCALING_COIN</span><span class="p">)</span>
+
+            <span class="c1"># Position the coin</span>
+            <span class="n">coin</span><span class="o">.</span><span class="n">center_x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="n">SCREEN_WIDTH</span><span class="p">)</span>
+            <span class="n">coin</span><span class="o">.</span><span class="n">center_y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="n">SCREEN_HEIGHT</span><span class="p">)</span>
+
+            <span class="c1"># Add the coin to the lists</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">coin_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coin</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">""" Draw everything """</span>
+        <span class="n">arcade</span><span class="o">.</span><span class="n">start_render</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coin_list</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_list</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+<span class="hll">        <span class="c1"># Put the text on the screen.</span>
+</span><span class="hll">        <span class="n">output</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"Score: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">score</span><span class="si">}</span><span class="s2">"</span>
+</span><span class="hll">        <span class="n">arcade</span><span class="o">.</span><span class="n">draw_text</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">arcade</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">WHITE</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>
+</span>
+<span class="hll">    <span class="k">def</span> <span class="nf">on_mouse_motion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">):</span>
+</span><span class="hll">        <span class="sd">""" Handle Mouse Motion """</span>
+</span><span class="hll">
+</span><span class="hll">        <span class="c1"># Move the center of the player sprite to match the mouse x, y</span>
+</span><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span><span class="o">.</span><span class="n">center_x</span> <span class="o">=</span> <span class="n">x</span>
+</span><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span><span class="o">.</span><span class="n">center_y</span> <span class="o">=</span> <span class="n">y</span>
+</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">""" Main method """</span>
+    <span class="n">window</span> <span class="o">=</span> <span class="n">MyGame</span><span class="p">()</span>
+    <span class="n">window</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+    <span class="n">arcade</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell14">
+      <img src="./21. Sprites And Collisions — Arcade 2021 documentation_files/copy-button.svg" alt="Copy to clipboard">
+    </button></div>
+</td></tr></tbody></table></div>
+</div>
+</div>
+<div class="section" id="the-update-method">
+<h3><span class="section-number">21.2.6. </span>The Update Method<a class="headerlink" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#the-update-method" title="Permalink to this headline"></a></h3>
+<p>Our <code class="docutils literal notranslate"><span class="pre">update</span></code> method needs to do three things:</p>
+<ol class="arabic simple">
+<li><p>Update each of the sprites</p></li>
+<li><p>Check to see if the player is touching any coins</p></li>
+<li><p>Remove any coins colliding with the player, and update the score.</p></li>
+</ol>
+<p>Each sprite has its own <code class="docutils literal notranslate"><span class="pre">update</span></code> method. This allows sprites to move and
+animate its images. Right now, our sprite does not have this method. But we
+will soon. Rather than call the <code class="docutils literal notranslate"><span class="pre">update</span></code> method of each sprite we have,
+there is an <code class="docutils literal notranslate"><span class="pre">update</span></code> method in each sprite list that will call <code class="docutils literal notranslate"><span class="pre">update</span></code>
+on each sprite in the list. Therefore, just calling <code class="docutils literal notranslate"><span class="pre">update</span></code> with our
+<code class="docutils literal notranslate"><span class="pre">coin_list</span></code> will cause all coin sprites to update.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre id="codecell15"><span></span><span class="bp">self</span><span class="o">.</span><span class="n">coin_list</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell15">
+      <img src="./21. Sprites And Collisions — Arcade 2021 documentation_files/copy-button.svg" alt="Copy to clipboard">
+    </button></div>
+</div>
+<p>How do we detect what coins are touching the player? We call the
+<a class="reference external" href="https://api.arcade.academy/en/latest/api/sprite_list.html#arcade.check_for_collision_with_list" title="(in Python Arcade Library v2.6.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">arcade.check_for_collision_with_list()</span></code></a> method. Pass it in our player sprite,
+along with a list of all the coins. That function will return a list of
+all colliding sprites. If no sprites collide, the list will be empty.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre id="codecell16"><span></span><span class="c1"># Generate a list of all sprites that collided with the player.</span>
+<span class="n">coins_hit_list</span> <span class="o">=</span> <span class="n">arcade</span><span class="o">.</span><span class="n">check_for_collision_with_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coin_list</span><span class="p">)</span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell16">
+      <img src="./21. Sprites And Collisions — Arcade 2021 documentation_files/copy-button.svg" alt="Copy to clipboard">
+    </button></div>
+</div>
+<p>What do we do with this <code class="docutils literal notranslate"><span class="pre">hit_list</span></code> we get back? We loop through it. We add one
+to the score for each sprite hit.</p>
+<p>We also need to get rid of the sprite. The sprite class has a method called
+<a class="reference external" href="https://api.arcade.academy/en/latest/api/sprites.html#arcade.Sprite.remove_from_sprite_lists" title="(in Python Arcade Library v2.6.3)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">arcade.Sprite.remove_from_sprite_lists()</span></code></a>. This method will remove the sprite from existence.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre id="codecell17"><span></span><span class="c1"># Loop through each colliding sprite, remove it, and add to the score.</span>
+<span class="k">for</span> <span class="n">coin</span> <span class="ow">in</span> <span class="n">coins_hit_list</span><span class="p">:</span>
+    <span class="n">coin</span><span class="o">.</span><span class="n">remove_from_sprite_lists</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell17">
+      <img src="./21. Sprites And Collisions — Arcade 2021 documentation_files/copy-button.svg" alt="Copy to clipboard">
+    </button></div>
+</div>
+<p>Here’s the whole <code class="docutils literal notranslate"><span class="pre">update</span></code> method put together:</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">Sprite Sample With Update Method</span><a class="headerlink" href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html#id9" title="Permalink to this code"></a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span></pre></div></td><td class="code"><div class="highlight"><pre id="codecell18"><span></span><span class="sd">""" Sprite Sample Program """</span>
+
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">arcade</span>
+
+<span class="c1"># --- Constants ---</span>
+<span class="n">SPRITE_SCALING_PLAYER</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">SPRITE_SCALING_COIN</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">COIN_COUNT</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="n">SCREEN_WIDTH</span> <span class="o">=</span> <span class="mi">800</span>
+<span class="n">SCREEN_HEIGHT</span> <span class="o">=</span> <span class="mi">600</span>
+
+
+<span class="k">class</span> <span class="nc">MyGame</span><span class="p">(</span><span class="n">arcade</span><span class="o">.</span><span class="n">Window</span><span class="p">):</span>
+    <span class="sd">""" Our custom Window Class"""</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">""" Initializer """</span>
+        <span class="c1"># Call the parent class initializer</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">SCREEN_WIDTH</span><span class="p">,</span> <span class="n">SCREEN_HEIGHT</span><span class="p">,</span> <span class="s2">"Sprite Example"</span><span class="p">)</span>
+
+        <span class="c1"># Variables that will hold sprite lists</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_list</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coin_list</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Set up the player info</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># Don't show the mouse cursor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_mouse_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="n">arcade</span><span class="o">.</span><span class="n">set_background_color</span><span class="p">(</span><span class="n">arcade</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">AMAZON</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">""" Set up the game and initialize the variables. """</span>
+
+        <span class="c1"># Sprite lists</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_list</span> <span class="o">=</span> <span class="n">arcade</span><span class="o">.</span><span class="n">SpriteList</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coin_list</span> <span class="o">=</span> <span class="n">arcade</span><span class="o">.</span><span class="n">SpriteList</span><span class="p">()</span>
+
+        <span class="c1"># Score</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># Set up the player</span>
+        <span class="c1"># Character image from kenney.nl</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span> <span class="o">=</span> <span class="n">arcade</span><span class="o">.</span><span class="n">Sprite</span><span class="p">(</span><span class="s2">"character.png"</span><span class="p">,</span> <span class="n">SPRITE_SCALING_PLAYER</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span><span class="o">.</span><span class="n">center_x</span> <span class="o">=</span> <span class="mi">50</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span><span class="o">.</span><span class="n">center_y</span> <span class="o">=</span> <span class="mi">50</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span><span class="p">)</span>
+
+        <span class="c1"># Create the coins</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">COIN_COUNT</span><span class="p">):</span>
+
+            <span class="c1"># Create the coin instance</span>
+            <span class="c1"># Coin image from kenney.nl</span>
+            <span class="n">coin</span> <span class="o">=</span> <span class="n">arcade</span><span class="o">.</span><span class="n">Sprite</span><span class="p">(</span><span class="s2">"coin_01.png"</span><span class="p">,</span> <span class="n">SPRITE_SCALING_COIN</span><span class="p">)</span>
+
+            <span class="c1"># Position the coin</span>
+            <span class="n">coin</span><span class="o">.</span><span class="n">center_x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="n">SCREEN_WIDTH</span><span class="p">)</span>
+            <span class="n">coin</span><span class="o">.</span><span class="n">center_y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="n">SCREEN_HEIGHT</span><span class="p">)</span>
+
+            <span class="c1"># Add the coin to the lists</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">coin_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coin</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">""" Draw everything """</span>
+        <span class="n">arcade</span><span class="o">.</span><span class="n">start_render</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coin_list</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_list</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+        <span class="c1"># Put the text on the screen.</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"Score: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">score</span><span class="si">}</span><span class="s2">"</span>
+        <span class="n">arcade</span><span class="o">.</span><span class="n">draw_text</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">arcade</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">WHITE</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_mouse_motion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">):</span>
+        <span class="sd">""" Handle Mouse Motion """</span>
+
+        <span class="c1"># Move the center of the player sprite to match the mouse x, y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span><span class="o">.</span><span class="n">center_x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span><span class="o">.</span><span class="n">center_y</span> <span class="o">=</span> <span class="n">y</span>
+
+<span class="hll">    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_time</span><span class="p">):</span>
+</span><span class="hll">        <span class="sd">""" Movement and game logic """</span>
+</span><span class="hll">
+</span><span class="hll">        <span class="c1"># Call update on all sprites (The sprites don't do much in this</span>
+</span><span class="hll">        <span class="c1"># example though.)</span>
+</span><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">coin_list</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</span><span class="hll">
+</span><span class="hll">        <span class="c1"># Generate a list of all sprites that collided with the player.</span>
+</span><span class="hll">        <span class="n">coins_hit_list</span> <span class="o">=</span> <span class="n">arcade</span><span class="o">.</span><span class="n">check_for_collision_with_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player_sprite</span><span class="p">,</span>
+</span><span class="hll">                                                              <span class="bp">self</span><span class="o">.</span><span class="n">coin_list</span><span class="p">)</span>
+</span><span class="hll">
+</span><span class="hll">        <span class="c1"># Loop through each colliding sprite, remove it, and add to the score.</span>
+</span><span class="hll">        <span class="k">for</span> <span class="n">coin</span> <span class="ow">in</span> <span class="n">coins_hit_list</span><span class="p">:</span>
+</span><span class="hll">            <span class="n">coin</span><span class="o">.</span><span class="n">remove_from_sprite_lists</span><span class="p">()</span>
+</span><span class="hll">            <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="sd">""" Main method """</span>
+    <span class="n">window</span> <span class="o">=</span> <span class="n">MyGame</span><span class="p">()</span>
+    <span class="n">window</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+    <span class="n">arcade</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre><button class="copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#codecell18">
+      <img src="./21. Sprites And Collisions — Arcade 2021 documentation_files/copy-button.svg" alt="Copy to clipboard">
+    </button></div>
+</td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="https://learn.arcade.academy/en/latest/chapters/20_sounds/sounds.html" class="btn btn-neutral float-left" title="20. Sound Effects" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="https://learn.arcade.academy/en/latest/chapters/22_moving_sprites/moving_sprites.html" class="btn btn-neutral float-right" title="22. Moving Sprites" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr>
+
+  <div role="contentinfo">
+    <p>© Copyright 2021, Paul Vincent Craven.
+      <span class="commit">Revision <code>badc5cb0</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org/">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions"><!-- Inserted RTD Footer -->
+
+<div class="injected">
+
+  
+
+      
+      
+      <dl>
+        <dt>Languages</dt>
+
+        
+        
+        <dd class="rtd-current-item">
+          <a href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html">en</a>
+        </dd>
+
+        
+        
+        
+        
+        
+        <dd>
+          <a href="https://learn.arcade.academy/de/latest/chapters/21_sprites_and_collisions/sprites.html">de</a>
+        </dd>
+        
+        
+        
+        
+        
+        <dd>
+          <a href="https://learn.arcade.academy/sv/latest/chapters/21_sprites_and_collisions/sprites.html">sv</a>
+        </dd>
+        
+        
+        
+
+      </dl>
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+        <dd class="rtd-current-item">
+          <a href="https://learn.arcade.academy/en/latest/chapters/21_sprites_and_collisions/sprites.html">latest</a>
+        </dd>
+        
+      </dl>
+      
+      
+
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+        <dd><a href="https://learn.arcade.academy/_/downloads/en/latest/pdf/">PDF</a></dd>
+        
+        <dd><a href="https://learn.arcade.academy/_/downloads/en/latest/htmlzip/">HTML</a></dd>
+        
+        <dd><a href="https://learn.arcade.academy/_/downloads/en/latest/epub/">Epub</a></dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        
+        <!-- These are kept as relative links for internal installs that are http -->
+        <dt>On Read the Docs</dt>
+        <dd>
+          <a href="https://readthedocs.org/projects/arcade-book/">Project Home</a>
+        </dd>
+        <dd>
+          <a href="https://readthedocs.org/projects/arcade-book/builds/">Builds</a>
+        </dd>
+        <dd>
+          <a href="https://readthedocs.org/projects/arcade-book/downloads/">Downloads</a>
+        </dd>
+      </dl>
+      
+
+      
+
+      
+      <dl>
+        <dt>On GitHub</dt>
+        <dd>
+          <a href="https://github.com/pvcraven/arcade_book/blob/master/source/chapters/21_sprites_and_collisions/sprites.rst">View</a>
+        </dd>
+        
+        <dd>
+          <a href="https://github.com/pvcraven/arcade_book/edit/master/source/chapters/21_sprites_and_collisions/sprites.rst">Edit</a>
+        </dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        <dt>Search</dt>
+        <dd>
+          <div style="padding: 6px;">
+            
+            <form id="flyout-search-form" class="wy-form" target="_blank" action="https://readthedocs.org/projects/arcade-book/search/" method="get">
+              <input type="text" name="q" aria-label="Search docs" placeholder="Search docs">
+              </form>
+          </div>
+        </dd>
+      </dl>
+      
+
+      <hr>
+
+      
+        <small>
+          <span>Hosted by <a href="https://readthedocs.org/">Read the Docs</a></span>
+          <span> · </span>
+          <a href="https://docs.readthedocs.io/page/privacy-policy.html">Privacy Policy</a>
+        </small>
+      
+
+      
+
+</div>
+</div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="./21. Sprites And Collisions — Arcade 2021 documentation_files/js(2)"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1MTEXJPKRX');
+</script>
+
+
+
+</body></html>

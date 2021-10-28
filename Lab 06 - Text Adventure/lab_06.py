@@ -50,28 +50,28 @@ def main():
         if my_result.lower() == "north" or my_result.lower() == "n":
             next_room = room_list[current_room].north
             if next_room is None:
-                print("No room")
+                print("No door")
             else:
                 current_room = next_room
 
         if my_result.lower() == "south" or my_result.lower() == "s":
             next_room = room_list[current_room].south
             if next_room is None:
-                print("No room")
+                print("No door")
             else:
                 current_room = next_room
 
         if my_result.lower() == "west" or my_result.lower() == "w":
             next_room = room_list[current_room].west
             if next_room is None:
-                print("No room")
+                print("No door")
             else:
                 current_room = next_room
 
         if my_result.lower() == "east" or my_result.lower() == "e":
             next_room = room_list[current_room].east
             if next_room is None:
-                print("No room")
+                print("No door")
             else:
                 current_room = next_room
         if my_result.lower() == "quit" or my_result.lower() == "q":
