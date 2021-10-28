@@ -5,6 +5,10 @@ import arcade
 # --- Constants ---
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
+MOVEMENT_SPEED = 5
+MOUSE_CLICK_SOUND = arcade.load_sound("arcade_resources_sounds_error2.wav")
+WALL_HIT_SOUND =arcade.load_sound("arcade_resources_sounds_error4.wav")
+MOUSE_CLICK_SOUND2 = arcade.load_sound("arcade_resources_sounds_gameover3.wav")
 
 
 def draw_watch():
@@ -74,7 +78,8 @@ def draw_hair(x, y):
     arcade.draw_rectangle_filled(100 + x - 100, 100 + y - 100, 25, 3, arcade.csscolor.BLACK)
     arcade.draw_rectangle_filled(110 + x - 100, 110 + y - 100, 20, 3, arcade.csscolor.BLACK)
     arcade.draw_rectangle_filled(120 + x - 100, 90 + y - 100, 30, 3, arcade.csscolor.BLACK)
-    
+
+
 class I_love_running:
     def __init__(self, position_x, position_y, change_x, change_y, radius, color):
         # Take the parameters of the init function above,
@@ -87,20 +92,33 @@ class I_love_running:
         self.color = color
 
     def draw_love(self):
-        arcade.draw_text("I",
-                         self.position_x + 175, self.position_y + 400,
-                         arcade.csscolor.BLACK, 15)
-        arcade.draw_text("Love",
-                         self.position_x + 200, self.position_y + 290,
-                         arcade.csscolor.BLACK, 80)
-        # arcade.draw_text("Running",
-        #                  self.position_x + 410, self.position_y + 300,
-        #                  arcade.csscolor.BLACK, 30)
+        arcade.draw_circle_filled(self.position_x, self.position_y, 10,
+                                   arcade.csscolor.SKY_BLUE, num_segments=32)
+        arcade.draw_circle_filled(15 + self.position_x, 20 + self.position_y, 20,
+                                   arcade.csscolor.SKY_BLUE, num_segments=32)
+        arcade.draw_circle_filled(self.position_x - 15, self.position_y - 25, 15,
+                                   arcade.csscolor.SKY_BLUE, num_segments=32)
 
     def update(self):
         # Move the ball
         self.position_y += self.change_y
         self.position_x += self.change_x
+
+        if self.position_x < 30:
+            arcade.play_sound(WALL_HIT_SOUND)
+            self.position_x = 30
+
+        if self.position_x > SCREEN_WIDTH -35:
+            arcade.play_sound(WALL_HIT_SOUND)
+            self.position_x = SCREEN_WIDTH - 35
+
+        if self.position_y < 40:
+            arcade.play_sound(WALL_HIT_SOUND)
+            self.position_y = 40
+
+        if self.position_y > SCREEN_HEIGHT - 40:
+            arcade.play_sound(WALL_HIT_SOUND)
+            self.position_y = SCREEN_HEIGHT - 40
 
 
 class Sweat:
@@ -126,8 +144,36 @@ class MyGame(arcade.Window):
     def on_mouse_motion(self, x, y, dx, dy):
         """ Called to update our objects.
         Happens approximately 60 times per second."""
-        self.ball.position_x = x
-        self.ball.position_y = y
+        self.sweat.position_x = x
+        self.sweat.position_y = y
+
+    def on_mouse_press(self, x: float, y: float, button: int, modifiers: int):
+        if button == arcade.MOUSE_BUTTON_LEFT:
+            arcade.play_sound(MOUSE_CLICK_SOUND)
+
+        if button == arcade.MOUSE_BUTTON_RIGHT:
+            arcade.play_sound(MOUSE_CLICK_SOUND2)
+
+    def on_key_press(self, key, modifiers):
+        """ Called whenever the user presses a key. """
+        if key == arcade.key.LEFT:
+            self.sweat2.change_x = -MOVEMENT_SPEED
+        elif key == arcade.key.RIGHT:
+            self.sweat2.change_x = MOVEMENT_SPEED
+        elif key == arcade.key.UP:
+            self.sweat2.change_y = MOVEMENT_SPEED
+        elif key == arcade.key.DOWN:
+            self.sweat2.change_y = -MOVEMENT_SPEED
+
+    def on_key_release(self, key, modifiers):
+        """ Called whenever a user releases a key. """
+        if key == arcade.key.LEFT or key == arcade.key.RIGHT:
+            self.sweat2.change_x = 0
+        elif key == arcade.key.UP or key == arcade.key.DOWN:
+            self.sweat2.change_y = 0
+
+    def update(self, delta_time):
+        self.sweat2.update()
 
     """ Our Custom Window Class"""
 
@@ -141,13 +187,13 @@ class MyGame(arcade.Window):
         arcade.set_background_color(arcade.color.ASH_GREY)
 
         # Create our ball
-        self.ball = Sweat(50, 50, 15, arcade.color.BLACK)
-        self.text = I_love_running(50, 50, 0, 0, 10, arcade.color.RED)
+        self.sweat = Sweat(50, 50, 15, arcade.color.BLACK)
+        self.sweat2 = I_love_running(50, 50, 0, 0, 10, arcade.color.RED)
 
     def on_draw(self):
         arcade.start_render()
-        self.ball.draw()
-        self.text.draw_love()
+        self.sweat.draw()
+        self.sweat2.draw_love()
 
         draw_watch()
         draw_date_time()
