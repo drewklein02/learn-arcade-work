@@ -7,7 +7,7 @@ SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 MOVEMENT_SPEED = 5
 MOUSE_CLICK_SOUND = arcade.load_sound("arcade_resources_sounds_error2.wav")
-WALL_HIT_SOUND =arcade.load_sound("arcade_resources_sounds_error4.wav")
+WALL_HIT_SOUND = arcade.load_sound("arcade_resources_sounds_error4.wav")
 MOUSE_CLICK_SOUND2 = arcade.load_sound("arcade_resources_sounds_gameover3.wav")
 
 

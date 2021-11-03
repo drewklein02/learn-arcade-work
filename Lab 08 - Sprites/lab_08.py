@@ -147,23 +147,29 @@ class MyGame(arcade.Window):
 
         output = "Score " + str(self.score)
         arcade.draw_text(output, 10, 20, arcade.color.WHITE, 25)
+        if len(self.coin_list) == 0:
+            arcade.draw_text("Game Over", 400, 300, arcade.color.BLACK, 50)
 
     def on_mouse_motion(self, x, y, dx, dy):
         """ Handle Mouse Motion """
 
-        # Move the center of the player sprite to match the mouse x, y
-        self.player_sprite.center_x = x
-        self.player_sprite.center_y = y
+        if len(self.coin_list) > 0:
+            self.player_sprite.center_x = x
+            self.player_sprite.center_y = y
+        elif len(self.coin_list) == 0:
+            self.set_mouse_visible(True)
+
 
     def on_update(self, delta_time):
-
-        self.coin_list.update()
+        if len(self.coin_list) > 0:
+            self.coin_list.update()
+            self.enemy_list.update()
         coin_hit_list = arcade.check_for_collision_with_list(self.player_sprite, self.coin_list)
         for coin in coin_hit_list:
             coin.remove_from_sprite_lists()
             self.score += 1
             arcade.play_sound(self.money_sound)
-        self.enemy_list.update()
+
         enemy_hit_list = arcade.check_for_collision_with_list(self.player_sprite, self.enemy_list)
         for enemy in enemy_hit_list:
             enemy.remove_from_sprite_lists()
