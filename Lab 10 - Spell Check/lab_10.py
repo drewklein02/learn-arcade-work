@@ -8,7 +8,6 @@ def split_line(line):
 
 
 def main():
-
     dictionary_file = open("dictionary.txt")
     dictionary_list = []
     for line in dictionary_file:
@@ -16,7 +15,6 @@ def main():
         dictionary_list.append(line)
     dictionary_file.close()
     print("There were", len(dictionary_list), "names in the file.")
-
 
     alice_text = open("AliceInWonderLand200.txt")
     line_number = 0
@@ -63,6 +61,3 @@ def main():
 
 
 main()
-
-
-
