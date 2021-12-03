@@ -142,9 +142,9 @@ def main():
                     print("You picked up the", item.name)
             if not found:
                 print("This item is not here.")
-        if command_words[0] == "inventory":
-            if item.room_number == -1:
-                print(item.name)
+        if command_words[0] == "inventory" or command_words[0] == "i":
+            if item.room_number in item_list == -1:
+                print("You are holding", item.name)
         if command_words[0] == "drop":
             if command_words[1] == item.name:
                 item.room_number = 0
