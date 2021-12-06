@@ -13,6 +13,7 @@ class Item:
         self.room_number = room_number
         self.name = name
 
+
 def main():
     room_list = []
     item_list = []
@@ -47,7 +48,7 @@ def main():
                 " You can only exit to the east to the hallway.", None, None, None, 2)
     room_list.append(room)
     room = Room("You are at the bottom of a long narrow stairwell with a "
-                "chandelier and pictures on the wall.", None, None, 1, 10)
+                "chandelier and pictures on the wall.", None, None, 1, None)
     room_list.append(room)
     room = Room("You have used the stairs and entered the study that "
                 "displays a globe and a old desk.There is a door to the east "
@@ -143,16 +144,34 @@ def main():
             if not found:
                 print("This item is not here.")
         if command_words[0] == "inventory" or command_words[0] == "i":
-            if item.room_number in item_list == -1:
-                print("You are holding", item.name)
-        if command_words[0] == "drop":
-            if command_words[1] == item.name:
-                item.room_number = 0
+            has = False
+            for item in item_list:
+                if item.room_number == -1:
+                    print("You are holding", item.name)
+                    has = True
+            if not has:
+                print("You don't have anything")
+        if command_words[0] == "drop" or command_words[0] == "d":
+            drop = False
+            for item in item_list:
+                if command_words[1] == item.name:
+                    item.room_number = 0
+                    drop = True
+                    print("You dropped the", item.name)
+            if not drop:
+                print("You do not have this item.")
+        if command_words[0] == "use" or command_words[0] == "u":
+            lock = False
+            if command_words[1] == "code":
+                if room in room_list == 9:
+                    if item_list[0].room_number == -1:
+                        room_list[9].east = 10
+                        lock = True
+                        print("You unlocked the stairs")
+                    else:
+                        print("You do not have the code.")
         if command_words[0] == "quit" or command_words[0] == "q":
             done = True
-
-
-
 
 
 main()
