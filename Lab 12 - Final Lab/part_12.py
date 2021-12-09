@@ -55,12 +55,10 @@ def main():
             else:
                 current_room = next_room
         if command_words[0] == "get":
-            found = False
             for item in item_list:
                 if command_words[1] == item.name:
                     if item.room_number == current_room:
                         item.room_number = -1
-                        found = True
                         print("You picked up the", item.name)
                     else:
                         print("This item is not here.")
@@ -102,7 +100,6 @@ def main():
                 if current_room == 13:
                     if item_list[2].room_number == -1:
                         room_list[13].north = 15
-
                         print("You unlocked the shed")
                     else:
                         print("You do not have the key.")
