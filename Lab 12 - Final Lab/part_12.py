@@ -1,7 +1,11 @@
+# pulls all information needed for creating items
 import lab_12_items
+
+# pulls all information needed for creating the rooms
 import lab_12_rooms
 
 
+# calls functions in other files
 def main():
     lab_12_rooms.create_rooms()
     lab_12_items.create_items()
@@ -11,9 +15,14 @@ def main():
     current_room = 0
 
     done = False
+
+    # opening line
+    print()
     print("Welcome to Escape room, move around the house, collect items, have fun\n"
           "and try to escape! Use the commands, east, west, north, and south to \n"
           "travel. Use the commands get and use to interact with items.")
+
+    # loop containing all user functions
     while not done:
         print()
         print(room_list[current_room].description)
@@ -27,6 +36,7 @@ def main():
         print()
         command_words = my_result.split(" ")
 
+        # direction command
         if command_words[0] == "north" or command_words[0] == "n":
             next_room = room_list[current_room].north
             if next_room is None:
@@ -54,6 +64,8 @@ def main():
                 print("No door")
             else:
                 current_room = next_room
+
+            # get command
         if command_words[0] == "get":
             for item in item_list:
                 if command_words[1] == item.name:
@@ -62,6 +74,8 @@ def main():
                         print("You picked up the", item.name)
                     else:
                         print("This item is not here.")
+
+            # inventory command
         if command_words[0] == "inventory" or command_words[0] == "i":
             has = False
             for item in item_list:
@@ -70,6 +84,8 @@ def main():
                     has = True
             if not has:
                 print("You don't have anything")
+
+            # drop command
         if command_words[0] == "drop" or command_words[0] == "d":
             drop = False
             for item in item_list:
@@ -79,38 +95,50 @@ def main():
                     print("You dropped the", item.name)
             if not drop:
                 print("You do not have this item.")
+
+            # "Use" command
         if command_words[0] == "use" or command_words[0] == "u":
-            if command_words[1] == "paper":
+
+            if len(command_words) == 1:
+                print("Use what?")
+
+            # Use paper
+            elif command_words[1] == "paper":
                 if current_room == 9:
                     if item_list[0].room_number == -1:
                         room_list[9].east = 10
                         print("You unlocked the stairs")
                     else:
                         print("You do not have the correct item.")
-        if command_words[0] == "use" or command_words[0] == "u":
-            if command_words[1] == "plunger":
+
+                # Use plunger
+            elif command_words[1] == "plunger":
                 if current_room == 8:
                     if item_list[1].room_number == -1:
                         item_list[2].room_number = -1
                         print("You collected the key")
                     else:
                         print("Find the key.")
-        if command_words[0] == "use" or command_words[0] == "u":
-            if command_words[1] == "key":
+
+                # use key
+            elif command_words[1] == "key":
                 if current_room == 13:
                     if item_list[2].room_number == -1:
                         room_list[13].north = 15
                         print("You unlocked the shed")
                     else:
                         print("You do not have the key.")
-        if command_words[0] == "use" or command_words[0] == "u":
-            if command_words[1] == "axe":
+
+                # use axe
+            elif command_words[1] == "axe":
                 if current_room == 16:
                     if item_list[3].room_number == -1:
                         done = True
                         print("You escaped, congratulations!!")
                     else:
                         print("You do not have the axe.")
+
+        # quit feature
         if command_words[0] == "quit" or command_words[0] == "q":
             done = True
 

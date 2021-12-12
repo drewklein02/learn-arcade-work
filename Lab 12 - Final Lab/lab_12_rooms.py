@@ -10,7 +10,7 @@ class Room:
 def create_rooms():
     room_list = []
     room = Room("You are in a small entrance room with a little bench and doors in the west, north,\n"
-                " and east sides.", 2, None, 3, 1)
+                "and east sides.", 2, None, 3, 1)
     room_list.append(room)
     room = Room("You are in a messy mudroom with a dirty floor but surprisingly clean walls,"
                 "\nwith doors to your west and east.", None, None, 0, 9)
@@ -19,7 +19,7 @@ def create_rooms():
                 'with doors on every side but east.', 6, 0, 8, None)
     room_list.append(room)
     room = Room("You are in a huge living room with green leather furniture, colored carpet,\n"
-                " and abstract art.There are doors on the north and east side.\n", 4, None, None, 0)
+                "and abstract art.There are doors on the north and east side.\n", 4, None, None, 0)
     room_list.append(room)
     room = Room(
         "You are in a dining room with impressively well made wood table and \n"
@@ -32,14 +32,14 @@ def create_rooms():
                 None, 4, 6)
     room_list.append(room)
     room = Room("You are in a fire place room with red furniture and a wide glass door\n"
-                " overlooking the deck.You can go north to the deck or west to the kitchen.", 7, 2, 5, None)
+                "overlooking the deck.You can go north to the deck or west to the kitchen.", 7, 2, 5, None)
     room_list.append(room)
     room = Room("You are on a well made red wood deck that overlooks the pool\n "
                 "and backyard, you can see the trees in the distance.\nYou can "
                 "go out into the yard or back in the house.", 13, 6, None, None)
     room_list.append(room)
     room = Room("You are in a small bathroom with a clean but clogged toilet.\n"
-                " You can only exit to the east to the hallway.", None, None, None, 2)
+                "You can only exit to the east to the hallway.", None, None, None, 2)
     room_list.append(room)
     room = Room("You are at the bottom of a long narrow stairwell with a \n"
                 "chandelier and pictures on the wall.", None, None, 1, None)
@@ -55,11 +55,11 @@ def create_rooms():
                 "There is a view of the back yard, it has a pool, shed and firm fence.", None, None, 10, None)
     room_list.append(room)
     room = Room("You have entered the backyard, perfectly cut grass, a beautiful\n"
-                " blue water pool to the east,a huge shed to the north, and a \n"
+                "blue water pool to the east,a huge shed to the north, and a \n"
                 "fence to the west.", None, 7, 16, 14)
     room_list.append(room)
     room = Room("You are running jumping very high and splash, you jumped in the pool,\n"
-                " the water is cool, but feels refreshing. You can exit on any side.", 13, 13, 13, 13)
+                "the water is cool, but feels refreshing. You can exit on any side.", 13, 13, 13, 13)
     room_list.append(room)
     room = Room("You have entered the shed, there are many tools, such as a shovel\n "
                 "and an axe. You only have one exit.", None, 13, None, None)

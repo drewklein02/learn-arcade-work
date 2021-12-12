@@ -4,13 +4,14 @@ class Item:
         self.room_number = room_number
         self.name = name
 
+
 def create_items():
     item_list = []
     item = Item("There is a old dirty piece of paper on the book shelf with the\n"
-                " numbers 2387 on the back of it. In the corner it reads ascend.", 3, "paper")
+                "numbers 2387 on the back of it. In the corner it reads ascend.", 3, "paper")
     item_list.append(item)
     item = Item("The plunger is dirty and sitting in the corner\n"
-                " with a broken handle.", 11, "plunger")
+                "with a broken handle.", 11, "plunger")
     item_list.append(item)
     item = Item("You found a rusty old key, that seems to have been sitting in\n "
                 "water for a long time.", 8, "key")
